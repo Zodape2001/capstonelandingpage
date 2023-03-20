@@ -1,0 +1,159 @@
+<h4>Patient Health Information</h4>
+<div>
+  <div class="mainclass">
+    <div class="childclass childclass1">
+      <p>
+        <span>Name : </span>
+      </p>
+      <p>
+        <span>Age : </span>
+      </p>
+      <p><span>Gender : </span>Male</p>
+      <p><span>Contact Number : </span>9730282523</p>
+      <p><span>Address : </span>Sunder nager nageshwarwadi 431001</p>
+    </div>
+    <div class="childclass childclass2">
+      <p><span>Blood Group : </span>o +ve</p>
+      <p><span>Last consultanton On: </span>16/02/2023</p>
+      <p><span>Last consultation with : </span> Dr.Aakash</p>
+      <p>
+        <span>Key note on previous consultation : </span>Lorem ipsum dolor sit
+        amet, consectetur adipisicing elit. Tempore nemo, quibusdam quis
+        doloribus mollitia cupiditate.
+      </p>
+    </div>
+    <div class="childclass childclass3">
+      <p><span>Blood pressure : </span>Nil</p>
+      <p><span>Sugar : </span>Nil</p>
+      <p><span>Allergies : </span>skin</p>
+      <p><span>Hight : </span> 154 cm</p>
+      <p><span>Weight : </span>55 kg</p>
+      <p>
+        <span>Other notes to Doctor : </span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore nemo,
+        quibusdam quis doloribus mollitia cupiditate.
+      </p>
+    </div>
+  </div>
+</div>
+<button
+  mat-raised-button
+  color="primary"
+  class="historybtn"
+  [routerLink]="['/patient-history']"
+>
+  View previous Medical History
+</button>
+
+<div class="tableclass">
+  <h4>Observation Table</h4>
+  <button
+    mat-raised-button
+    color="primary"
+    mat-button
+    style="float: right; margin-bottom: 15px"
+    (click)="openDialogNewObservation()"
+  >
+    New Observation
+  </button>
+  <table mat-table class="mat-elevation-z8" [dataSource]="testdata">
+    <!-- Position Column -->
+    <ng-container matColumnDef="testId" class="table-row">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.testId }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="testName" class="table-row">
+      <th mat-header-cell *matHeaderCellDef>Test Conducted</th>
+      <td mat-cell *matCellDef="let element">{{ element.testName }}</td>
+    </ng-container>
+
+    <!-- Booked On -->
+    <ng-container matColumnDef="result" class="table-row">
+      <th mat-header-cell *matHeaderCellDef>Actual Result</th>
+      <td mat-cell *matCellDef="let element">{{ element.result }}</td>
+    </ng-container>
+
+    <!-- Notes -->
+    <ng-container matColumnDef="testNotes" class="table-row">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">{{ element.testNotes }}</td>
+    </ng-container>
+
+    <!-- Basic Diagonosis Information
+    <ng-container matColumnDef="remarks" class="table-row">
+      <th mat-header-cell *matHeaderCellDef>Remarks</th>
+      <td mat-cell *matCellDef="let element">{{ element.remarks }}</td>
+    </ng-container> -->
+
+    <!-- Action -->
+    <ng-container matColumnDef="action" class="table-row">
+      <th mat-header-cell *matHeaderCellDef>Edit/Delete</th>
+      <td mat-cell *matCellDef="let element" class="editdelete">
+        <button
+          mat-raised-button
+          color="primary"
+          class="btn1"
+          (click)="openDialogEditObservation()"
+        >
+          Edit
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="openDialogDeleteObservation()"
+        >
+          Delete
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="table-row"
+    ></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 15]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
+
+<button
+  mat-raised-button
+  color="primary"
+  mat-button
+  class="btn-class"
+  (click)="openDialogEnterPrescription()"
+>
+  Enter prescription
+</button>
+<button
+  mat-raised-button
+  color="primary"
+  mat-button
+  class="btn-class"
+  (click)="openDialogViewPrescription()"
+>
+  View prescription
+</button>
+<form action="">
+  <p><label for="" style="">Enter Key Notes:</label></p>
+  <textarea rows="4" cols="50"></textarea>
+</form>
+<div class="bottom-btn">
+  <button mat-raised-button color="primary" mat-button class="btn-class">
+    Save
+  </button>
+  <button
+    mat-raised-button
+    color="link"
+    mat-button
+    class="btn-class btn-class1"
+  >
+    Cansel
+  </button>
+</div>

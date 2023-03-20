@@ -1,0 +1,38 @@
+<div class="navigationmenu">
+  <mat-toolbar color="primary">
+    <img src="./assets/image/spiral.png" alt="">
+    <span>PMS</span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+      matTooltip="Patient Login/Registration"
+    >
+      <mat-icon>people</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="btn btn1">
+        <mat-icon
+          ><span class="material-icons">admin_panel_settings</span></mat-icon
+        >
+        <span>Admin Login</span>
+      </button>
+      <button mat-menu-item class="btn btn2">
+        <mat-icon>person</mat-icon>
+        <span>Physicia Login</span>
+      </button>
+      <button mat-menu-item class="btn btn3">
+        <mat-icon>notifications_off</mat-icon>
+        <span>Nurse Login</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
