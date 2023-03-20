@@ -3,14 +3,16 @@
   <div class="mainclass">
     <div class="childclass childclass1">
       <p>
-        <span>Name : </span>
+        <span>Name : {{ patientbyIdData.firstName }}</span>
       </p>
       <p>
-        <span>Age : </span>
+        <span>Age : {{ patientbyIdData.dateOfBirth }}</span>
       </p>
-      <p><span>Gender : </span>Male</p>
-      <p><span>Contact Number : </span>9730282523</p>
-      <p><span>Address : </span>Sunder nager nageshwarwadi 431001</p>
+      <p>
+        <span>Gender : {{ patientbyIdData.gender }}</span>
+      </p>
+      <p><span>Contact Number : </span>{{ patientbyIdData.contactNumber }}</p>
+      <p><span>Address : </span>{{ patientbyIdData.address }}</p>
     </div>
     <div class="childclass childclass2">
       <p><span>Blood Group : </span>o +ve</p>
@@ -102,6 +104,7 @@
         <button
           mat-raised-button
           color="accent"
+          (click)="deleteidbyclick(element.testId)"
           (click)="openDialogDeleteObservation()"
         >
           Delete

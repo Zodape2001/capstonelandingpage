@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ViewpetienthistoryComponent } from './components/viewpetienthistory/viewpetienthistory.component';
 import { PhysicianprofileComponent } from './components/physicianprofile/physicianprofile.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DeleteappointmentsComponent } from './components/deleteappointments/deleteappointments.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     EnterprescriptionComponent,
     ViewprescriptionComponent,
     ViewpetienthistoryComponent,
-    PhysicianprofileComponent],
+    PhysicianprofileComponent,
+    DeleteappointmentsComponent],
   imports: [
     CommonModule,
     HttpClientModule,

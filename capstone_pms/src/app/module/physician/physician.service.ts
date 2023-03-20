@@ -25,6 +25,10 @@ export class PhysicianService {
     );
   }
 
+  rejectAppointment(patientId: any) {
+    return this.http.delete(`http://localhost:8081/appointment/${patientId}`);
+  }
+
   //All pending appointments
   getPendingAppointments(physicianEmail: string, acceptance: string) {
     return this.http.get(
@@ -37,25 +41,25 @@ export class PhysicianService {
   }
 
   getallPatient() {
-    return this.http.get('http://localhost:8010/patientinfo');
+    return this.http.get('http://localhost:9004/patientinfo');
   }
 
   getallPrescription() {
-    return this.http.get('http://localhost:8020/prescription');
+    return this.http.get('http://localhost:8082/prescription');
   }
 
   getPatientbyId(patientId: number) {
-    return this.http.get(`http://localhost:8010/patientinfo/${patientId}`);
+    return this.http.get(`http://localhost:9004/patientinfo/${patientId}`);
   }
 
   enterePrescriptionFormData(data: any) {
-    return this.http.post('http://localhost:8020/prescription', data);
+    return this.http.post('http://localhost:8082/prescription', data);
   }
 
   addPrescription(prescription: Prescription, visitId: any) {
     prescription.visitId = visitId;
     return this.http.post(
-      'http://localhost:8020/patient/prescription',
+      'http://localhost:8082/patient/prescription',
       prescription
     );
   }

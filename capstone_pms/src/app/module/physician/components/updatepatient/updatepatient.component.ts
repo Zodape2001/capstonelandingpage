@@ -71,13 +71,11 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     });
   }
 
-  deletestbyiddata: any;
-  delettestbyid() {
-    this.service.deletetest(52).subscribe((response) => {
-      this.deletestbyiddata = response;
-      console.log('deleted');
-    });
+  deleteidbyclick(teid: any) {
+    sessionStorage.setItem('visitid', teid);
   }
+  deletestbyiddata: any;
+  delettestbyid() {}
 
   patientdata: any;
   getallPatient() {
@@ -87,9 +85,11 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     });
   }
 
+  patientid: any = sessionStorage.getItem('setid');
   patientbyIdData: any;
   getPatientbyId() {
-    this.service.getPatientbyId(2).subscribe((response) => {
+    console.log('this is patient id', this.patientid);
+    this.service.getPatientbyId(this.patientid).subscribe((response) => {
       this.patientbyIdData = response;
       console.log(this.patientbyIdData);
     });

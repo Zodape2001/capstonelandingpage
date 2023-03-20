@@ -34,20 +34,24 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getTodaysAppointment();
   }
-  
-  dataSource:any;
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
+
+  dataSource: any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   todaysAppointment: any;
   getTodaysAppointment() {
     this.service
-      .getTodaysAppointment('p2@gmail.com', '15-03-2023', 'acceptance=accepted')
-      .subscribe(response => {
+      .getTodaysAppointment('p1@gmail.com', '15-03-2023', 'acceptance=accepted')
+      .subscribe((response) => {
         this.todaysAppointment = response;
         console.log(this.todaysAppointment);
-        this.dataSource=new MatTableDataSource(ELEMENT_DATA);
+        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
         this.dataSource.paginator = this.paginator;
       });
+  }
+
+  getpatientidbyclick(patientid: any) {
+    sessionStorage.setItem('setid', patientid);
   }
 
   // ngAfterViewInit() {

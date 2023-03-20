@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import {
   Component,
   ViewChild,
@@ -10,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PhysicianService } from '../../physician.service';
+import { DeleteappointmentsComponent } from '../deleteappointments/deleteappointments.component';
 // import { PhysicianService } from 'src/app/service/physician.service';
 
 export interface PeriodicElement {
@@ -18,7 +20,7 @@ export interface PeriodicElement {
   date: string;
   acceptance: string;
   patientId: number;
-  physicianEmail: string;
+  // physicianEmail: string;
   submissionDate: string;
   action1: string;
   action2: string;
@@ -39,11 +41,11 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = [
     'appointmentId',
+    'patientId',
     'reason',
     'date',
     'acceptance',
-    'patientId',
-    'physicianEmail',
+    // 'physicianEmail',
     'submissionDate',
     'action',
   ];
@@ -58,7 +60,8 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
   // durationInSecond = 5;
   constructor(
     private snakBar: MatSnackBar,
-    private service: PhysicianService
+    private service: PhysicianService,
+    private matDialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.getPendingAppointments();
@@ -74,16 +77,30 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
         console.log(this.pendingAppointmnt);
       });
   }
-  openAcceptSnackbar(message: string, action: string) {
-    let snakBarRef = this.snakBar.open(message, action, { duration: 3000 });
-    snakBarRef.afterDismissed().subscribe();
 
-    snakBarRef.onAction().subscribe();
+  //delete Appointments
+  rejectAppointment(patidentid: any) {
+    sessionStorage.setItem('patientid', patidentid);
   }
-  openrejectSnackbar(message: string, action: string) {
-    let snakBarRef = this.snakBar.open(message, action, { duration: 3000 });
-    snakBarRef.afterDismissed().subscribe();
 
-    snakBarRef.onAction().subscribe();
+  openDialogDeleteAppointments() {
+    this.matDialog.open(DeleteappointmentsComponent),
+      {
+        Width: '800px',
+      };
   }
+
+  // openAcceptSnackbar(message: string, action: string) {
+  //   let snakBarRef = this.snakBar.open(message, action, { duration: 3000 });
+  //   snakBarRef.afterDismissed().subscribe();
+
+  //   snakBarRef.onAction().subscribe();
+  // }
+
+  // openrejectSnackbar(message: string, action: string) {
+  //   let snakBarRef = this.snakBar.open(message, action, { duration: 3000 });
+  //   snakBarRef.afterDismissed().subscribe();
+
+  //   snakBarRef.onAction().subscribe();
+  // }
 }
