@@ -82,6 +82,7 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     this.service.getallPatient().subscribe((response) => {
       this.patientdata = response;
       console.log(this.patientdata);
+      
     });
   }
 

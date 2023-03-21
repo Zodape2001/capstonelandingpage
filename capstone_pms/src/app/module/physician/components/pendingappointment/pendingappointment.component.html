@@ -50,12 +50,20 @@
   <ng-container matColumnDef="action" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let element" class="btn-table-row">
-      <button mat-stroked-button color="primary" class="btn1">Accept</button>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="btn1"
+        (click)="acceptappointment(element.appointmentId,element.patientId)"
+        (click)="openDialogAcceptAppointments()"
+      >
+        Accept
+      </button>
       <button
         mat-stroked-button
         color="accent"
         class="btn2"
-        (click)="rejectAppointment(element.patientId)"
+        (click)="rejectAppointment(element.appointmentId)"
         (click)="openDialogDeleteAppointments()"
       >
         Reject

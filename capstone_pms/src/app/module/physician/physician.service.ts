@@ -74,6 +74,13 @@ export class PhysicianService {
     return this.http.delete(`http://localhost:8082/tests/${testId}`);
   }
 
+  //accepted appointment
+  acceptappointment(appointmentId: number, acceptance: String) {
+    return this.http.put(
+      'http://localhost:8081/appointments/' + appointmentId + '/' + acceptance,
+      ''
+    );
+  }
   public myvar: any;
   public setvisitid(visitid: any) {
     this.myvar = visitid;

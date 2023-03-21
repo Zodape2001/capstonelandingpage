@@ -17,13 +17,13 @@ export class DeleteappointmentsComponent implements OnInit {
   }
 
   deletedata: any;
-  patientid: any = sessionStorage.getItem('patientid');
+  appointmentid: any = sessionStorage.getItem('appointmentid');
   delete() {
-    this.service.rejectAppointment(this.patientid).subscribe((response) => {
+    this.service.rejectAppointment(this.appointmentid).subscribe((response) => {
       this.deletedata = response;
       console.log(
         'this is patient id whose appointment delete',
-        this.patientid
+        this.appointmentid
       );
     });
   }
