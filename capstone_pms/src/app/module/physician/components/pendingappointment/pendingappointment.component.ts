@@ -79,8 +79,8 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
   }
 
   //delete Appointments
-  rejectAppointment(patidentid: any) {
-    sessionStorage.setItem('patientid', patidentid);
+  rejectAppointment(appointmentId: any) {
+    sessionStorage.setItem('appointmentId', appointmentId);
   }
 
   openDialogDeleteAppointments() {

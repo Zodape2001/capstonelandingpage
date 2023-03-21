@@ -25,8 +25,10 @@ export class PhysicianService {
     );
   }
 
-  rejectAppointment(patientId: any) {
-    return this.http.delete(`http://localhost:8081/appointment/${patientId}`);
+  rejectAppointment(appointmentId: any) {
+    return this.http.delete(
+      `http://localhost:9005/appointment/${appointmentId}`
+    );
   }
 
   //All pending appointments
