@@ -36,6 +36,13 @@ export class PhysicianService {
     );
   }
 
+  //get all visit detials by patient id
+  getvisitdetailsbyid(patientId: any) {
+    return this.http.get(
+      `http://localhost:8082/patient/health-records/${patientId}`
+    );
+  }
+
   getallTest() {
     return this.http.get('http://localhost:8082/tests');
   }

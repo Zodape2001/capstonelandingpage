@@ -8,15 +8,16 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContentComponent } from './components/content/content.component';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { HerosectionComponent } from './components/content/herosection/herosection.component';
 import { BelowherocardComponent } from './components/content/belowherocard/belowherocard.component';
 import { DoctorcardComponent } from './components/content/doctorcard/doctorcard.component';
 import { AssoicatecardComponent } from './components/content/assoicatecard/assoicatecard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HerosectionComponent,
     BelowherocardComponent,
     DoctorcardComponent,
-    AssoicatecardComponent
+    AssoicatecardComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +39,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     HttpClientModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  providers: [HttpClientModule, DatePipe],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

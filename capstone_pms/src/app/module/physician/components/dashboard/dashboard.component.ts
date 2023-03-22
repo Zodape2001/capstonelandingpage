@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -30,21 +31,29 @@ export class DashboardComponent implements OnInit {
     'patientId',
     'action',
   ];
-  constructor(private service: PhysicianService) {}
+
+  constructor(private service: PhysicianService, public datepipe: DatePipe) {}
   ngOnInit(): void {
     this.getTodaysAppointment();
   }
-
-  dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  currentDate: DatePipe = new DatePipe('en-us');
+  dataSource: any;
   todaysAppointment: any;
+  transformdate = '22-03-2023';
+  email = 'p1@gmail.com';
+  status = 'acceptance=accepted';
   getTodaysAppointment() {
+    var date = new Date();
+    var transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');
+    console.log(transformdate);
     this.service
-      .getTodaysAppointment('p1@gmail.com', '15-03-2023', 'acceptance=accepted')
+      .getTodaysAppointment(this.email, this.transformdate, this.status)
       .subscribe((response) => {
         this.todaysAppointment = response;
         console.log(this.todaysAppointment);
+
         this.dataSource = new MatTableDataSource(ELEMENT_DATA);
         this.dataSource.paginator = this.paginator;
       });

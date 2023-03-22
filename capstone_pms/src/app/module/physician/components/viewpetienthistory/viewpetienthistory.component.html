@@ -2,16 +2,22 @@
 <div>
   <div class="mainclass">
     <div class="childclass childclass1">
-      <p><span>Name : </span>Aakash Sstroked</p>
-      <p><span>Age : </span>22</p>
+      <p>
+        <span>Name : </span> {{ patientbyIdData.firstName }}
+        {{ patientbyIdData.lastName }}
+      </p>
+      <p><span>Age : </span>{{ patientbyIdData.dateOfBirth }}</p>
     </div>
     <div class="childclass childclass2">
-      <p><span>Gender : </span>Male</p>
-      <p><span>Blood Group : </span>o +ve</p>
+      <p><span>Gender : </span>{{ patientbyIdData.gender }}</p>
+      <p><span>Blood Group : </span>{{ visistdetailsdata.bloodGroup }}</p>
     </div>
     <div class="childclass childclass3">
       <p><span>Last consultanton On : </span>16/02/2023</p>
-      <p><span>Last consultation with : </span> Dr.Aakash</p>
+      <p>
+        <span>Last consultation with : </span
+        >{{ visistdetailsdata.physicianEmail }}
+      </p>
     </div>
   </div>
 </div>
@@ -20,40 +26,33 @@
 
 <h3>Key Notes:</h3>
 <p>
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero fugit iusto
-  corrupti at voluptas cum.
+  {{ visistdetailsdata.keyNotes }}
 </p>
 
 <p style="border-top: 1px solid grey; padding-top: 15px">Observation made</p>
-<table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+<table mat-table class="mat-elevation-z8" [dataSource]="testdata">
   <!-- Position Column -->
-  <ng-container matColumnDef="id" class="table-row">
+  <ng-container matColumnDef="testId" class="table-row">
     <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.testId }}</td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="testConducted" class="table-row">
+  <ng-container matColumnDef="testName" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Test Conducted</th>
-    <td mat-cell *matCellDef="let element">{{ element.testConducted }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.testName }}</td>
   </ng-container>
 
   <!-- Booked On -->
-  <ng-container matColumnDef="actualResult" class="table-row">
+  <ng-container matColumnDef="result" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Actual Result</th>
-    <td mat-cell *matCellDef="let element">{{ element.actualResult }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.result }}</td>
   </ng-container>
 
   <!-- Notes -->
-  <ng-container matColumnDef="status" class="table-row">
+  <ng-container matColumnDef="testNotes" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Status</th>
-    <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-  </ng-container>
-
-  <!-- Basic Diagonosis Information -->
-  <ng-container matColumnDef="remarks" class="table-row">
-    <th mat-header-cell *matHeaderCellDef>Remarks</th>
-    <td mat-cell *matCellDef="let element">{{ element.remarks }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.testNotes }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
