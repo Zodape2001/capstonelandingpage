@@ -1,22 +1,63 @@
 <h4><mat-icon>calendar_today</mat-icon><span>Todays Appointment</span></h4>
-<div class="mat-mdc-form-field">
-  <!-- <mat-label>Filter</mat-label> -->
-  <!-- <label for="">Label</label> -->
+<div class="inputfield">
+  <div class="date">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="Choose a date"
+        [min]="todayDate"
+        (dateChange)="onDateSelected($event.target.value)"
+      />
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <i (click)="picker.open()" class="fa-solid fa-calendar-days"></i>
+  </div>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        #message
+        maxlength="25"
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Patient Name"
+      />
+      <mat-hint align="end">{{ message.value.length }} / 25</mat-hint>
+    </mat-form-field>
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </form>
+</div>
+<!-- <div class="mat-mdc-form-field">
   <input
     matInput
     (keyup)="applyFilter($event)"
     placeholder="Ex. Patient Name"
     #input
   />
+<<<<<<< HEAD
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Position Column -->
   <ng-container matColumnDef="appointmentId" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Appointment Id.</th>
+=======
+</div> -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="appointmentId" class="table-row">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+>>>>>>> 354bde7cd58f5595ed8ae6fa99052190b5641e05
     <td mat-cell *matCellDef="let element">{{ element.appointmentId }}</td>
   </ng-container>
 
   <!-- Patient Name -->
+  <ng-container matColumnDef="patientId" class="table-row">
+    <th mat-header-cell *matHeaderCellDef>Patient Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.patientId }}</td>
+  </ng-container>
+
+  <!-- Reason -->
   <ng-container matColumnDef="reason" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Reason</th>
     <td mat-cell *matCellDef="let element">{{ element.reason }}</td>
@@ -34,12 +75,15 @@
     <td mat-cell *matCellDef="let element">{{ element.acceptance }}</td>
   </ng-container>
 
+<<<<<<< HEAD
   <!-- Reason -->
   <ng-container matColumnDef="patientId" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Patient Id</th>
     <td mat-cell *matCellDef="let element">{{ element.patientId }}</td>
   </ng-container>
 
+=======
+>>>>>>> 354bde7cd58f5595ed8ae6fa99052190b5641e05
   <!-- Action -->
   <ng-container matColumnDef="action" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Action</th>

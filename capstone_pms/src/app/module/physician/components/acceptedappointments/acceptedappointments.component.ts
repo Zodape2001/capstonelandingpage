@@ -13,7 +13,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PhysicianService } from '../../physician.service';
 import { DeleteappointmentsComponent } from '../deleteappointments/deleteappointments.component';
 import { AcceptappointmentsComponent } from '../opendailogacceptappointment/acceptappointments.component';
-// import { PhysicianService } from 'src/app/service/physician.service';
 
 export interface PeriodicElement {
   appointmentId: number;
@@ -21,19 +20,16 @@ export interface PeriodicElement {
   date: string;
   acceptance: string;
   patientId: number;
-  // physicianEmail: string;
   submissionDate: string;
-  action1: string;
-  action2: string;
 }
-
 const ELEMENT_DATA: PeriodicElement[] = [];
+
 @Component({
-  selector: 'app-pendingappointment',
-  templateUrl: './pendingappointment.component.html',
-  styleUrls: ['./pendingappointment.component.scss'],
+  selector: 'app-acceptedappointments',
+  templateUrl: './acceptedappointments.component.html',
+  styleUrls: ['./acceptedappointments.component.scss'],
 })
-export class PendingappointmentComponent implements OnInit, AfterViewInit {
+export class AcceptedappointmentsComponent {
   ngOnInit(): void {
     this.getPendingAppointments();
     throw new Error('Method not implemented.');
@@ -51,10 +47,9 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
     'date',
     'submissionDate',
     'acceptance',
-    'action',
   ];
-
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
@@ -71,7 +66,7 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
   pendingAppointmnt: any;
   getPendingAppointments() {
     this.service
-      .getPendingAppointments('p1@gmail.com', 'acceptance=pending')
+      .getPendingAppointments('p1@gmail.com', 'acceptance=accepted')
       .subscribe((response) => {
         this.pendingAppointmnt = response;
         console.log(this.pendingAppointmnt);
@@ -114,5 +109,5 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
   //   snakBarRef.afterDismissed().subscribe();
 
   //   snakBarRef.onAction().subscribe();
-  // }
+  // }}
 }
