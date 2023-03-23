@@ -54,8 +54,8 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
     'submissionDate',
     'action',
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {

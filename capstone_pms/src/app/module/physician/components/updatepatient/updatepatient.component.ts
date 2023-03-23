@@ -30,7 +30,7 @@ const ELEMENT_DATA: PeriodicElement[] = [];
   templateUrl: './updatepatient.component.html',
   styleUrls: ['./updatepatient.component.scss'],
 })
-export class UpdatepatientComponent implements AfterViewInit, OnInit {
+export class UpdatepatientComponent implements OnInit {
   visitid: any;
   ngOnInit(): void {
     this.getallTest();
@@ -38,6 +38,7 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     this.getPatientbyId();
     // this.delettestbyid();
     this.getvisitdetailsbyid();
+    this.getvisithistorydetailsbyid();
   }
   displayedColumns: string[] = [
     'testId',
@@ -47,7 +48,6 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     // 'remarks',
     'action',
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -63,6 +63,8 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
   //view previous history click
 
   viewprevioushistoryclick() {}
+
+  dataSource: any;
   testdata: any;
   getallTest() {
     this.service.getallTest().subscribe((response) => {
@@ -70,7 +72,8 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
 
       this.visitid = this.testdata[0].visitId;
       this.service.setvisitid(this.visitid);
-
+      this.dataSource = new MatTableDataSource(this.testdata);
+      this.dataSource.paginator = this.paginator;
       console.log(this.visitid);
     });
   }
@@ -78,9 +81,8 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
   deleteidbyclick(teid: any) {
     sessionStorage.setItem('visitid', teid);
   }
-  deletestbyiddata: any;
-  // delettestbyid() {}
 
+  deletestbyiddata: any;
   patientdata: any;
   getallPatient() {
     this.service.getallPatient().subscribe((response) => {
@@ -105,10 +107,26 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     console.log('this is patient id in getvisitdetailsbyid', this.patientid);
     this.service.getvisitdetailsbyid(this.patientid).subscribe((response) => {
       this.visistdetailsdata = response;
-      // console.log(this.visistdetailsdata);
+
+      console.log('visit detials data', this.visistdetailsdata);
     });
   }
 
+  oldvisitid: any;
+  visisthistorydetailsdata: any;
+  getvisithistorydetailsbyid() {
+    console.log(
+      'this is patient id in getvisit history detailsby id for history',
+      this.patientid
+    );
+
+    this.service
+      .getvisisthistorydetailsbyid(this.patientid)
+      .subscribe((response) => {
+        this.visisthistorydetailsdata = response;
+        console.log(this.visisthistorydetailsdata);
+      });
+  }
   openDialogNewObservation() {
     this.matDialog.open(NewobservationComponent),
       {

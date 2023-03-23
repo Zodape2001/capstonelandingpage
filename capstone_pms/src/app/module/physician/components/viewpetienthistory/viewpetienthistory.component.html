@@ -13,7 +13,7 @@
       <p><span>Blood Group : </span>{{ visistdetailsdata.bloodGroup }}</p>
     </div>
     <div class="childclass childclass3">
-      <p><span>Last consultanton On : </span>16/02/2023</p>
+      <p><span>Last consultanton On : </span>{{ visistdetailsdata.date }}</p>
       <p>
         <span>Last consultation with : </span
         >{{ visistdetailsdata.physicianEmail }}
@@ -22,7 +22,7 @@
   </div>
 </div>
 <h3 style="border-top: 1px solid grey; padding-top: 15px">Visit History</h3>
-<p>Dr. Andrew on 1/27/2023</p>
+<p>{{ visistdetailsdata.physicianEmail }} 1/27/2023</p>
 
 <h3>Key Notes:</h3>
 <p>
@@ -30,7 +30,7 @@
 </p>
 
 <p style="border-top: 1px solid grey; padding-top: 15px">Observation made</p>
-<table mat-table class="mat-elevation-z8" [dataSource]="testdata">
+<table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
   <!-- Position Column -->
   <ng-container matColumnDef="testId" class="table-row">
     <th mat-header-cell *matHeaderCellDef>ID</th>

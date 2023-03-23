@@ -1,11 +1,11 @@
 <h4><mat-icon>timelapse</mat-icon> <span> Pending Appointment</span></h4>
-<input
+<!-- <input
   type="date"
   name="ordinary"
   min="{{ currentDate | date : 'yyyy-MM-dd' }}"
   id=""
   class="date"
-/>
+/> -->
 <table mat-table [dataSource]="pendingAppointmnt" class="mat-elevation-z8">
   <!-- Position Column -->
   <ng-container matColumnDef="appointmentId" class="table-row">
@@ -54,7 +54,7 @@
         mat-stroked-button
         color="primary"
         class="btn1"
-        (click)="acceptappointment(element.appointmentId,element.patientId)"
+        (click)="acceptappointment(element.appointmentId, element.patientId)"
         (click)="openDialogAcceptAppointments()"
       >
         Accept

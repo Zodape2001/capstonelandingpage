@@ -41,20 +41,20 @@ export class DashboardComponent implements OnInit {
   currentDate: DatePipe = new DatePipe('en-us');
   dataSource: any;
   todaysAppointment: any;
-  transformdate = '22-03-2023';
+  transformdate: any;
   email = 'p1@gmail.com';
   status = 'acceptance=accepted';
   getTodaysAppointment() {
     var date = new Date();
-    var transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');
-    console.log(transformdate);
+    this.transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');
+    console.log(this.transformdate);
     this.service
       .getTodaysAppointment(this.email, this.transformdate, this.status)
       .subscribe((response) => {
         this.todaysAppointment = response;
         console.log(this.todaysAppointment);
 
-        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+        this.dataSource = new MatTableDataSource(this.todaysAppointment);
         this.dataSource.paginator = this.paginator;
       });
   }

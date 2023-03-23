@@ -28,6 +28,7 @@ import { PhysicianprofileComponent } from './components/physicianprofile/physici
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DeleteappointmentsComponent } from './components/deleteappointments/deleteappointments.component';
 import { AcceptappointmentsComponent } from './components/acceptappointments/acceptappointments.component';
+import { ViewprescriptionhistoryComponent } from './components/viewprescriptionhistory/viewprescriptionhistory.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AcceptappointmentsComponent } from './components/acceptappointments/acc
     ViewpetienthistoryComponent,
     PhysicianprofileComponent,
     DeleteappointmentsComponent,
-    AcceptappointmentsComponent],
+    AcceptappointmentsComponent,
+    ViewprescriptionhistoryComponent],
   imports: [
     CommonModule,
     HttpClientModule,

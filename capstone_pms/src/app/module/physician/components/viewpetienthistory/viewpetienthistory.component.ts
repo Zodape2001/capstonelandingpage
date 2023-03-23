@@ -22,7 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 })
 export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['testId', 'testName', 'result', 'testNotes'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
@@ -37,7 +37,7 @@ export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getPatientbyId();
     this.getallTest();
-    this.getvisitdetailsbyid();
+    this.getvisithistorydetailsbyid();
     throw new Error('Method not implemented.');
   }
 
@@ -60,21 +60,23 @@ export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
 
       this.visitid = this.testdata[0].visitId;
       this.service.setvisitid(this.visitid);
-
+      this.dataSource = new MatTableDataSource(this.testdata);
       console.log('this is test data in history', this.visitid);
     });
   }
 
   visistdetailsdata: any;
-  getvisitdetailsbyid() {
+  getvisithistorydetailsbyid() {
     console.log(
       'this is patient id in getvisitdetailsbyid for history',
       this.patientid
     );
-    this.service.getvisitdetailsbyid(this.patientid).subscribe((response) => {
-      this.visistdetailsdata = response;
-      console.log(this.visistdetailsdata);
-    });
+    this.service
+      .getvisisthistorydetailsbyid(this.patientid)
+      .subscribe((response) => {
+        this.visistdetailsdata = response;
+        console.log(this.visistdetailsdata);
+      });
   }
 
   openDialogViewPrescription() {

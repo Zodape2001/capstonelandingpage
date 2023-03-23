@@ -43,6 +43,12 @@ export class PhysicianService {
     );
   }
 
+  //Get visit history details by id
+  getvisisthistorydetailsbyid(patientId: any) {
+    return this.http.get(
+      `http://localhost:8081/appointment/${patientId}/previous`
+    );
+  }
   getallTest() {
     return this.http.get('http://localhost:8082/tests');
   }
@@ -51,8 +57,8 @@ export class PhysicianService {
     return this.http.get('http://localhost:9004/patientinfo');
   }
 
-  getallPrescription() {
-    return this.http.get('http://localhost:8082/prescription');
+  getallPrescriptionbyvisitiddata(visitId: any) {
+    return this.http.get(`http://localhost:8082/prescription/${visitId}`);
   }
 
   getPatientbyId(patientId: number) {
@@ -95,5 +101,14 @@ export class PhysicianService {
 
   public getvisitid() {
     return this.myvar;
+  }
+
+  public oldvisitid: any;
+  public setOldVisitId(visitid: any) {
+    this.oldvisitid = visitid;
+  }
+
+  public getOldVisitId() {
+    return this.oldvisitid;
   }
 }

@@ -1,7 +1,7 @@
-import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { PhysicianService } from 'src/app/module/physician/physician.service';
+import { PhysicianService } from '../../physician.service';
 
 export interface PeriodicElement {
   prescriptionId: number;
@@ -10,13 +10,12 @@ export interface PeriodicElement {
   prescriptionNotes: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [];
 @Component({
-  selector: 'app-viewprescription',
-  templateUrl: './viewprescription.component.html',
-  styleUrls: ['./viewprescription.component.scss'],
+  selector: 'app-viewprescriptionhistory',
+  templateUrl: './viewprescriptionhistory.component.html',
+  styleUrls: ['./viewprescriptionhistory.component.scss'],
 })
-export class ViewprescriptionComponent implements OnInit, AfterViewInit {
+export class ViewprescriptionhistoryComponent {
   constructor(private service: PhysicianService) {}
 
   ngOnInit() {
