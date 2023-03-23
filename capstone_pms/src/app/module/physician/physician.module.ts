@@ -12,6 +12,8 @@ import { EditobservationComponent } from './components/editobservation/editobser
 import { DeleteobservationComponent } from './components/deleteobservation/deleteobservation.component';
 import { EnterprescriptionComponent } from './components/enterprescription/enterprescription.component';
 import { ViewprescriptionComponent } from './components/viewprescription/viewprescription.component';
+import { AcceptappointmentsComponent } from './components/opendailogacceptappointment/acceptappointments.component';
+import { AcceptedappointmentsComponent } from './components/acceptedappointments/acceptedappointments.component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,8 +29,11 @@ import { ViewpetienthistoryComponent } from './components/viewpetienthistory/vie
 import { PhysicianprofileComponent } from './components/physicianprofile/physicianprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteappointmentsComponent } from './components/deleteappointments/deleteappointments.component';
-import { AcceptappointmentsComponent } from './components/opendailogacceptappointment/acceptappointments.component';
-import { AcceptedappointmentsComponent } from './components/acceptedappointments/acceptedappointments.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +68,10 @@ import { AcceptedappointmentsComponent } from './components/acceptedappointments
     FormsModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
 })
 export class PhysicianModule {}

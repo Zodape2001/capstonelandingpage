@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PhysicianService } from '../../physician.service';
 
+
+
 export interface PeriodicElement {
   appointmentId: number;
   reason: string;
@@ -31,32 +33,50 @@ export class DashboardComponent implements OnInit {
     'action',
   ];
 
-  constructor(private service: PhysicianService, public datepipe: DatePipe) {}
+  constructor(private service: PhysicianService, private datePipe: DatePipe) {}
   ngOnInit(): void {
-    this.getTodaysAppointment();
+    // this.getTodaysAppointment();
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  currentDate: DatePipe = new DatePipe('en-us');
-  dataSource: any;
-  todaysAppointment: any;
-  transformdate = '23-03-2023';
+  currentDate1: DatePipe = new DatePipe('en-us');
+  todayDate: Date = new Date();
+  formattedDate:any;
   email = 'p1@gmail.com';
   status = 'acceptance=accepted';
-  getTodaysAppointment() {
-    var date = new Date();
-    var transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');
-    console.log(transformdate);
+  dataSource: any;
+  todaysAppointment: any;
+  transformdate :any;
+  
+  onDateSelected(selectedDate: string) {
+    this.formattedDate = this.datePipe.transform(selectedDate, 'dd-MM-yyyy');
+    console.log(this.formattedDate);
     this.service
-      .getTodaysAppointment(this.email, this.transformdate, this.status)
-      .subscribe((response) => {
-        this.todaysAppointment = response;
-      
+    .getTodaysAppointment(this.email, this.formattedDate, this.status)
+    .subscribe((response) => {
+      this.todaysAppointment = response;
 
-        this.dataSource = new MatTableDataSource(this.todaysAppointment);
-        this.dataSource.paginator = this.paginator;
+      console.log(this.transformdate);
+
+      this.dataSource = new MatTableDataSource(this.todaysAppointment);
+      this.dataSource.paginator = this.paginator;
       });
   }
+  currentDate: DatePipe = new DatePipe('en-us');
+  // getTodaysAppointment() {
+  //   var date = new Date();
+  //   this.transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');
+  //   console.log(this.transformdate);
+  //   this.service
+  //     .getTodaysAppointment(this.email, this.transformdate, this.status)
+  //     .subscribe((response) => {
+  //       this.todaysAppointment = response;
+
+  //       console.log(this.transformdate);
+
+  //       this.dataSource = new MatTableDataSource(this.todaysAppointment);
+  //       this.dataSource.paginator = this.paginator;
+  //     });
+  // }
 
   getpatientidbyclick(patientid: any) {
     sessionStorage.setItem('setid', patientid);
