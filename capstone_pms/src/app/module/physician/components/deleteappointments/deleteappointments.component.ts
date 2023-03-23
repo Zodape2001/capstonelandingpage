@@ -17,7 +17,7 @@ export class DeleteappointmentsComponent implements OnInit {
   }
 
   deletedata: any;
-  appointmentid: any = sessionStorage.getItem('appointmentId');
+  appointmentid: any = sessionStorage.getItem('appointmentid');
   delete() {
     this.service.rejectAppointment(this.appointmentid).subscribe((response) => {
       this.deletedata = response;

@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PhysicianService } from '../../physician.service';
 import { DeleteappointmentsComponent } from '../deleteappointments/deleteappointments.component';
+import { AcceptappointmentsComponent } from '../acceptappointments/acceptappointments.component';
 // import { PhysicianService } from 'src/app/service/physician.service';
 
 export interface PeriodicElement {
@@ -33,10 +34,14 @@ const ELEMENT_DATA: PeriodicElement[] = [];
   styleUrls: ['./pendingappointment.component.scss'],
 })
 export class PendingappointmentComponent implements OnInit, AfterViewInit {
+  ngOnInit(): void {
+    this.getPendingAppointments();
+    throw new Error('Method not implemented.');
+  }
+
   // Date picker disable previous dates
   title = 'datePicker';
   currentDate: any = new Date();
-
   ordinaryDateSelected!: Date;
 
   displayedColumns: string[] = [
@@ -63,10 +68,6 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
     private service: PhysicianService,
     private matDialog: MatDialog
   ) {}
-  ngOnInit(): void {
-    this.getPendingAppointments();
-    throw new Error('Method not implemented.');
-  }
 
   pendingAppointmnt: any;
   getPendingAppointments() {
@@ -80,7 +81,19 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
 
   //delete Appointments
   rejectAppointment(appointmentId: any) {
-    sessionStorage.setItem('appointmentId', appointmentId);
+    sessionStorage.setItem('appointmentid', appointmentId);
+  }
+
+  //Accept appointments
+  acceptappointment(appointmentId: any, patientId: any) {
+    sessionStorage.setItem('appointmentid', appointmentId);
+  }
+
+  openDialogAcceptAppointments() {
+    this.matDialog.open(AcceptappointmentsComponent),
+      {
+        Width: '300px',
+      };
   }
 
   openDialogDeleteAppointments() {

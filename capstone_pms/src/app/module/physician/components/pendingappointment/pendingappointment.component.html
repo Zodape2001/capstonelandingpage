@@ -2,7 +2,7 @@
 <input
   type="date"
   name="ordinary"
-  min="{{ currentDate | date : 'yyyy-MM-dd' }}"
+  min="{{ currentDate | date : 'dd-mm-yyyy' }}"
   id=""
   class="date"
 />
@@ -50,7 +50,15 @@
   <ng-container matColumnDef="action" class="table-row">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let element" class="btn-table-row">
-      <button mat-stroked-button color="primary" class="btn1">Accept</button>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="btn1"
+        (click)="acceptappointment(element.appointmentId,element.patientId)"
+        (click)="openDialogAcceptAppointments()"
+      >
+        Accept
+      </button>
       <button
         mat-stroked-button
         color="accent"
