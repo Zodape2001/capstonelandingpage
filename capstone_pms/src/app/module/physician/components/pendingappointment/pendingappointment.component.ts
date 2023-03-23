@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PhysicianService } from '../../physician.service';
 import { DeleteappointmentsComponent } from '../deleteappointments/deleteappointments.component';
-import { AcceptappointmentsComponent } from '../acceptappointments/acceptappointments.component';
+import { AcceptappointmentsComponent } from '../opendailogacceptappointment/acceptappointments.component';
 // import { PhysicianService } from 'src/app/service/physician.service';
 
 export interface PeriodicElement {

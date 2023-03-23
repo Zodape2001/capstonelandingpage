@@ -30,6 +30,14 @@
       <button
         mat-button
         class="menu-button"
+        [routerLink]="['/physician/accepted-appointment']"
+      >
+        <mat-icon>check</mat-icon>
+        <span>Accepted</span>
+      </button>
+      <button
+        mat-button
+        class="menu-button"
         [routerLink]="['/physician/physician-profile']"
       >
         <mat-icon>person_outline</mat-icon>

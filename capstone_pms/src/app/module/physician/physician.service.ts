@@ -25,6 +25,13 @@ export class PhysicianService {
     );
   }
 
+  //All accepted Appointments
+  getAllAcceptedAppoitnments(physicianEmail: string,acceptance: string){
+    return this.http.get(
+      'http://localhost:8081/appointment/'+physicianEmail+'/'+'?'+acceptance
+    );
+  }
+
   rejectAppointment(appointmentId: any) {
     return this.http.delete(
       `http://localhost:9005/appointment/${appointmentId}`

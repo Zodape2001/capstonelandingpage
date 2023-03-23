@@ -6,6 +6,8 @@ import { PendingappointmentComponent } from './components/pendingappointment/pen
 import { UpdatepatientComponent } from './components/updatepatient/updatepatient.component';
 import { ViewpetienthistoryComponent } from './components/viewpetienthistory/viewpetienthistory.component';
 import { PhysicianprofileComponent } from './components/physicianprofile/physicianprofile.component';
+import { AcceptappointmentsComponent } from './components/opendailogacceptappointment/acceptappointments.component';
+import { AcceptedappointmentsComponent } from './components/acceptedappointments/acceptedappointments.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,10 @@ const routes: Routes = [
       {
         path: 'pending-appointment',
         component: PendingappointmentComponent,
+      },
+      {
+        path: 'accepted-appointment',
+        component: AcceptedappointmentsComponent,
       },
       {
         path: 'update-patient',
