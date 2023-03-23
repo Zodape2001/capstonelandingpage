@@ -51,9 +51,9 @@ export class DashboardComponent implements OnInit {
       .getTodaysAppointment(this.email, this.transformdate, this.status)
       .subscribe((response) => {
         this.todaysAppointment = response;
-        console.log(this.todaysAppointment);
+      
 
-        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+        this.dataSource = new MatTableDataSource(this.todaysAppointment);
         this.dataSource.paginator = this.paginator;
       });
   }
