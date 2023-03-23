@@ -1,68 +1,27 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ViewprescriptionComponent } from '../viewprescription/viewprescription.component';
-
+import { PhysicianService } from '../../physician.service';
 
 export interface PeriodicElement {
-  id: number;
-  testConducted: string;
-  actualResult: string;
-  status: string;
-  remarks: string;
+  testId: number;
+  testName: string;
+  result: string;
+  testNotes: string;
+  visitId: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 1,
-    testConducted: 'Brain',
-    actualResult: 'Violet I',
-    status: 'Better',
-    remarks: 'In Progress',
-  },
-  {
-    id: 2,
-    testConducted: 'Brain',
-    actualResult: 'Isla E',
-    status: 'Early',
-    remarks: 'Better',
-  },
-  {
-    id: 3,
-    testConducted: 'Heart',
-    actualResult: 'Theodore T',
-    status: 'Better',
-    remarks: 'Agerage',
-  },
-  {
-    id: 4,
-    testConducted: 'Bones',
-    actualResult: 'Oliver M',
-    status: 'Above Average',
-    remarks: 'Better',
-  },
-  {
-    id: 5,
-    testConducted: 'Throat',
-    actualResult: 'Oliva A',
-    status: 'Below Average',
-    remarks: 'Early',
-  },
-];
+const ELEMENT_DATA: PeriodicElement[] = [];
 @Component({
   selector: 'app-viewpetienthistory',
   templateUrl: './viewpetienthistory.component.html',
-  styleUrls: ['./viewpetienthistory.component.scss']
+  styleUrls: ['./viewpetienthistory.component.scss'],
 })
-export class ViewpetienthistoryComponent implements AfterViewInit{
-  displayedColumns: string[] = [
-    'id',
-    'testConducted',
-    'actualResult',
-    'status',
-  ];
+export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['testId', 'testName', 'result', 'testNotes'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -70,12 +29,58 @@ export class ViewpetienthistoryComponent implements AfterViewInit{
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(
+    private matDialog: MatDialog,
+    private service: PhysicianService
+  ) {}
+
+  ngOnInit(): void {
+    this.getPatientbyId();
+    this.getallTest();
+    this.getvisitdetailsbyid();
+    throw new Error('Method not implemented.');
+  }
+
+  patientid: any = sessionStorage.getItem('setid');
+  patientbyIdData: any;
+  getPatientbyId() {
+    console.log('this is patientid in history component ', this.patientid);
+    this.service.getPatientbyId(this.patientid).subscribe((response) => {
+      this.patientbyIdData = response;
+      console.log('this is history', this.patientbyIdData);
+    });
+  }
+
+  visitid: any;
+
+  testdata: any;
+  getallTest() {
+    this.service.getallTest().subscribe((response) => {
+      this.testdata = response;
+
+      this.visitid = this.testdata[0].visitId;
+      this.service.setvisitid(this.visitid);
+
+      console.log('this is test data in history', this.visitid);
+    });
+  }
+
+  visistdetailsdata: any;
+  getvisitdetailsbyid() {
+    console.log(
+      'this is patient id in getvisitdetailsbyid for history',
+      this.patientid
+    );
+    this.service.getvisitdetailsbyid(this.patientid).subscribe((response) => {
+      this.visistdetailsdata = response;
+      console.log(this.visistdetailsdata);
+    });
+  }
+
   openDialogViewPrescription() {
     this.matDialog.open(ViewprescriptionComponent),
       {
         Width: '800px',
       };
   }
-
 }

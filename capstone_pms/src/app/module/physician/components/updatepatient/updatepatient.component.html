@@ -15,21 +15,31 @@
       <p><span>Address : </span>{{ patientbyIdData.address }}</p>
     </div>
     <div class="childclass childclass2">
-      <p><span>Blood Group : </span>o +ve</p>
+      <p><span>Blood Group : </span> {{ visistdetailsdata.bloodGroup }}</p>
       <p><span>Last consultanton On: </span>16/02/2023</p>
-      <p><span>Last consultation with : </span> Dr.Aakash</p>
       <p>
-        <span>Key note on previous consultation : </span>Lorem ipsum dolor sit
-        amet, consectetur adipisicing elit. Tempore nemo, quibusdam quis
-        doloribus mollitia cupiditate.
+        <span>Last consultation with : </span>
+        {{ visistdetailsdata.physicianEmail }}
+      </p>
+      <p>
+        <span>Key Note on privious consultation</span>
+        {{ visistdetailsdata.keyNotes }}
       </p>
     </div>
     <div class="childclass childclass3">
-      <p><span>Blood pressure : </span>Nil</p>
-      <p><span>Sugar : </span>Nil</p>
+      <p>
+        <span>Blood pressure : </span
+        >{{ visistdetailsdata.bloodPressureSystolic }}/{{
+          visistdetailsdata.bloodPressureDiastolic
+        }}
+        mmHg
+      </p>
+      <p>
+        <span>Body Temperature : </span>{{ visistdetailsdata.bodyTemperature }}
+      </p>
       <p><span>Allergies : </span>skin</p>
-      <p><span>Hight : </span> 154 cm</p>
-      <p><span>Weight : </span>55 kg</p>
+      <p><span>Hight : </span> {{ visistdetailsdata.height }} cm</p>
+      <p><span>Weight : </span>{{ visistdetailsdata.weight }} kg</p>
       <p>
         <span>Other notes to Doctor : </span>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore nemo,

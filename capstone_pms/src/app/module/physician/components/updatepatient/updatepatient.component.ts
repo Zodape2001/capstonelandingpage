@@ -36,7 +36,8 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     this.getallTest();
     this.getallPatient();
     this.getPatientbyId();
-    this.delettestbyid();
+    // this.delettestbyid();
+    this.getvisitdetailsbyid();
   }
   displayedColumns: string[] = [
     'testId',
@@ -59,6 +60,9 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     private service: PhysicianService
   ) {}
 
+  //view previous history click
+
+  viewprevioushistoryclick() {}
   testdata: any;
   getallTest() {
     this.service.getallTest().subscribe((response) => {
@@ -75,24 +79,33 @@ export class UpdatepatientComponent implements AfterViewInit, OnInit {
     sessionStorage.setItem('visitid', teid);
   }
   deletestbyiddata: any;
-  delettestbyid() {}
+  // delettestbyid() {}
 
   patientdata: any;
   getallPatient() {
     this.service.getallPatient().subscribe((response) => {
       this.patientdata = response;
       console.log(this.patientdata);
-      
     });
   }
 
   patientid: any = sessionStorage.getItem('setid');
   patientbyIdData: any;
   getPatientbyId() {
-    console.log('this is patient id', this.patientid);
+    console.log('this is patient id in getPatientbyId ', this.patientid);
     this.service.getPatientbyId(this.patientid).subscribe((response) => {
       this.patientbyIdData = response;
       console.log(this.patientbyIdData);
+    });
+  }
+
+  // get visit detilas by patient id
+  visistdetailsdata: any;
+  getvisitdetailsbyid() {
+    console.log('this is patient id in getvisitdetailsbyid', this.patientid);
+    this.service.getvisitdetailsbyid(this.patientid).subscribe((response) => {
+      this.visistdetailsdata = response;
+      // console.log(this.visistdetailsdata);
     });
   }
 
