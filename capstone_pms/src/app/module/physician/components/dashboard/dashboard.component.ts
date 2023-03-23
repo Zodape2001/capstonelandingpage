@@ -25,10 +25,10 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = [
     'appointmentId',
+    'patientId',
     'reason',
     'date',
     'acceptance',
-    'patientId',
     'action',
   ];
 
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   currentDate: DatePipe = new DatePipe('en-us');
   dataSource: any;
   todaysAppointment: any;
-  transformdate = '22-03-2023';
+  transformdate = '23-03-2023';
   email = 'p1@gmail.com';
   status = 'acceptance=accepted';
   getTodaysAppointment() {
