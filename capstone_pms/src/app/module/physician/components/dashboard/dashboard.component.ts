@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PhysicianService } from '../../physician.service';
-// import { PhysicianService } from 'src/app/service/physician.service';
 
 export interface PeriodicElement {
   appointmentId: number;
@@ -62,11 +61,6 @@ export class DashboardComponent implements OnInit {
   getpatientidbyclick(patientid: any) {
     sessionStorage.setItem('setid', patientid);
   }
-
-  // ngAfterViewInit() {
-  //   // this.dataSource.sort = this.sort;
-  //   this.dataSource.paginator = this.paginator;
-  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
