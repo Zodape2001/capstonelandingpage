@@ -49,9 +49,8 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
     'patientId',
     'reason',
     'date',
-    'acceptance',
-    // 'physicianEmail',
     'submissionDate',
+    'acceptance',
     'action',
   ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
